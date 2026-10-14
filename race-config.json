@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "mode": "race",
+  "raceTitle": "ΔΟΚΙΜΗ REGATTAHUB ΕΙΟ 2026",
+  "raceDate": "17 & 18 Οκτωβρίου 2026",
+  "organizer": "",
+  "organizerLogoUrl": "",
+  "organizerBannerUrl": "",
+  "settingsEndpoint": "https://script.google.com/macros/s/AKfycbwZHkHtIf_wc9cMTh51gOUidUjBQ1b2-1JjmlZbUPzlfO1GnYpJ76lRIP0x2Gak_G52/exec?action=settings&settings=1J50v5c_0tVgSkZ7StlHo-yw5-XcYOE1gJ46Jsxw6_HY",
+  "links": {
+    "entries": "",
+    "crews": "",
+    "results": "",
+    "notice": "",
+    "entryForm": "https://regattahub.github.io/eio-test-20261014/",
+    "website": "https://regattahub.github.io/eio-test-20261014/crew_change.html",
+    "photos": "https://drive.google.com/drive/folders/1xMSsoicBQyovVYNdh5GXRsholDnAEm6b"
+  }
+}
