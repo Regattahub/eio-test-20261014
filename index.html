@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RegattaHub — ΔΟΚΙΜΗ REGATTAHUB ΕΙΟ 2026</title>
+<title>RegattaHub — ΔΟΚΙΜΗ REGATTAHUB 2026</title>
 <!-- RegattaHub MASTER race template -->
 <!-- MASTER CANDIDATE: unified EIO checks and missing cards; 0.2.7 tested on two repos -->
 <!-- Race-specific values are injected by New Race Wizard -->
@@ -870,7 +870,7 @@ height: 100dvh !important;
         border-radius:4px;
       "
     >
-      Επικολλήστε το ORC Reference όταν σας ζητηθεί στη φόρμα της ΕΙΟ.
+      Επικολλήστε το ORC Reference όταν σας ζητηθεί στη φόρμα δήλωσης.
     </div>
   </div>
 
@@ -884,13 +884,13 @@ height: 100dvh !important;
       color:#5f5147;
     "
   >
-    Η δήλωση πληρώματος πραγματοποιείται στην εφαρμογή της Ελληνικής Ιστιοπλοϊκής Ομοσπονδίας (ΕΙΟ/ΕΑΘ), η οποία προβάλλεται εδώ για τη διευκόλυνση του χρήστη.
+    Η δήλωση πληρώματος πραγματοποιείται σε εξωτερική εφαρμογή, η οποία προβάλλεται εδώ για τη διευκόλυνση του χρήστη.
   </div>
 
   <iframe
     src="https://www.offshore.org.gr/mail/raceprogram.php?intro=yes&show=available"
     style="width:100%; height:1200px; border:1px solid #ccc; background:white;"
-    title="Δήλωση Πληρώματος ΕΙΟ"
+    title="Δήλωση πληρώματος"
   ></iframe>
 </div>
 <div
@@ -905,7 +905,7 @@ height: 100dvh !important;
       style="width:22px; height:22px; margin-right:10px; vertical-align:middle;"
       onchange="document.getElementById('continueAfterEioBtn').style.display = this.checked ? 'inline-block' : 'none';"
     >
-    Έχω ολοκληρώσει και υποβάλει οριστικά τη δήλωση πληρώματος στην ΕΙΟ
+    Έχω ολοκληρώσει και υποβάλει οριστικά τη δήλωση πληρώματος
   </label>
 
   <div style="margin-top:16px;">
@@ -926,16 +926,16 @@ height: 100dvh !important;
   <div style="margin-bottom:20px;">
 <strong>ΚΥΒΕΡΝΗΤΗΣ</strong><br>
 <label style="font-weight:bold;">
-  Αναζητήστε τον κυβερνήτη στο Μητρώο Αθλητών της ΕΙΟ
+  Ελέγξτε την εγκυρότητα του δελτίου κυβερνήτη
 </label><br>
 
 <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-top:8px;">
-<input id="captainCardInput" type="text" inputmode="numeric" placeholder="Αρ. δελτίου" aria-label="Αριθμός δελτίου κυβερνήτη από ΕΙΟ" style="height:48px; width:220px; max-width:100%; font-size:18px; font-weight:700; text-align:center; color:#143a63; background:#fffdf2; border:2px solid #0d5e92; border-radius:7px; box-shadow:0 0 0 3px rgba(13,94,146,0.10); outline:none;">
+<input id="captainCardInput" type="text" inputmode="numeric" placeholder="Αρ. δελτίου" aria-label="Αριθμός δελτίου κυβερνήτη" style="height:48px; width:220px; max-width:100%; font-size:18px; font-weight:700; text-align:center; color:#143a63; background:#fffdf2; border:2px solid #0d5e92; border-radius:7px; box-shadow:0 0 0 3px rgba(13,94,146,0.10); outline:none;">
 
 </div>
 <div style="text-align:center; margin:12px 0 14px 0;">
   <button id="openEioCaptainBtn" class="btn" type="button" onclick="openEioAthleteRegistry()">
-    ΑΝΑΖΗΤΗΣΗ ΣΤΗΝ ΕΙΟ
+    ΕΛΕΓΧΟΣ ΕΓΚΥΡΟΤΗΤΑΣ ΔΕΛΤΙΟΥ
   </button>
 </div>
 <div style="height:14px;"></div>
@@ -977,7 +977,7 @@ height: 100dvh !important;
       type="text"
       inputmode="numeric"
       readonly
-      aria-label="Αριθμός δελτίου δεύτερου κυβερνήτη από ΕΙΟ"
+      aria-label="Αριθμός δελτίου δεύτερου κυβερνήτη"
     >
   </div>
 
@@ -1018,19 +1018,19 @@ height: 100dvh !important;
 </div>
 
   <div style="font-size:14px; margin:6px 0 12px 0; text-align:center;">
-    Ελεγμένα στοιχεία πληρώματος από το Μητρώο Αθλητών της ΕΙΟ.
+    Στοιχεία πληρώματος από τον έλεγχο εγκυρότητας δελτίων.
   </div>
 
   <div style="text-align:center; margin:12px 0 14px 0;">
     <button class="btn" type="button" onclick="startCrewEio()">
-      ΑΝΑΖΗΤΗΣΗ ΠΛΗΡΩΜΑΤΟΣ ΣΤΗΝ ΕΙΟ
+      ΕΛΕΓΧΟΣ ΔΕΛΤΙΩΝ ΠΛΗΡΩΜΑΤΟΣ
     </button>
   </div>
 
 <textarea
   id="bulkCrewCards"
-  aria-label="Δελτία πληρώματος που μεταφέρθηκαν από την ΕΙΟ"
-  placeholder="Τα δελτία από την ΕΙΟ θα εμφανιστούν εδώ"
+  aria-label="Δελτία πληρώματος από τον έλεγχο"
+  placeholder="Τα ελεγμένα δελτία θα εμφανιστούν εδώ"
   style="width:100%; height:105px; font-size:18px; font-weight:700; padding:12px; margin:8px 0 8px 0; font-family:Arial, sans-serif; color:#143a63; background:#f4f6f7; border:2px solid #0d5e92; border-radius:7px; box-shadow:0 0 0 3px rgba(13,94,146,0.10); outline:none;"
 ></textarea>
 
@@ -1123,7 +1123,7 @@ function makeSettingsEndpoint() {
 
 const CONFIG = {
   RACE_PREFIX: "EIO_TEST_20261014",
-  EVENT_TITLE: "ΔΟΚΙΜΗ REGATTAHUB ΕΙΟ 2026",
+  EVENT_TITLE: "ΔΟΚΙΜΗ REGATTAHUB 2026",
   RACE_DATE: "17 & 18 Οκτωβρίου 2026",
   SUBMIT_EXPIRATION: "16 ΟΚΤΩΒΡΙΟΥ 2026 ώρα: 21:00",
 
@@ -1283,7 +1283,7 @@ function applyCrewFlowUi() {
 
   if (continueBtn) {
     continueBtn.textContent = useEio
-      ? "ΔΗΛΩΣΗ ΠΛΗΡΩΜΑΤΟΣ ΕΙΟ"
+      ? "ΔΗΛΩΣΗ ΠΛΗΡΩΜΑΤΟΣ"
       : "ΚΑΤΑΧΩΡΗΣΗ ΠΛΗΡΩΜΑΤΟΣ";
   }
 
@@ -1350,7 +1350,7 @@ function applyRaceSettingsData(data, allowJotformId = true) {
   if (!data || data.success === false) return false;
 
   CONFIG.RACE_PREFIX = data.racePrefix || CONFIG.RACE_PREFIX;
-  CONFIG.EVENT_TITLE = data.raceTitle || CONFIG.EVENT_TITLE;
+  CONFIG.EVENT_TITLE = String(data.raceTitle || CONFIG.EVENT_TITLE).replace("ΔΟΚΙΜΗ REGATTAHUB ΕΙΟ 2026", "ΔΟΚΙΜΗ REGATTAHUB 2026");
   CONFIG.RACE_DATE = data.raceDate || CONFIG.RACE_DATE;
   CONFIG.SUBMIT_EXPIRATION =
     data.submitExpiration || CONFIG.SUBMIT_EXPIRATION;
@@ -2174,7 +2174,7 @@ if (
       const crewRowsForCheck = getCrewPdfRows();
 
       if (crewRowsForCheck.length === 0) {
-       alert("Πρέπει να υπάρχει τουλάχιστον ένα ελεγμένο μέλος πληρώματος. Προσθέστε νέο μέλος και ελέγξτε μόνο το δελτίο του στην ΕΙΟ.");
+       alert("Πρέπει να υπάρχει τουλάχιστον ένα ελεγμένο μέλος πληρώματος. Προσθέστε νέο μέλος και ελέγξτε την εγκυρότητα του δελτίου του.");
 return;
       }
 const wosr1 = document.getElementById("wosrMember1")?.value || "";
@@ -2551,7 +2551,7 @@ function openEioAthleteRegistry(target) {
       detail: { cards, role }
     }));
   } else {
-    alert("Απαιτείται ενεργή η επέκταση RegattaHub για τον έλεγχο στην ΕΙΟ.");
+    alert("Η επέκταση RegattaHub δεν αναγνωρίστηκε. Βεβαιωθείτε ότι είναι ενεργή και ανανεώστε τη σελίδα.");
   }
 }
 function startSecondCaptainEio() {
@@ -2573,7 +2573,7 @@ function startSecondCaptainEio() {
     btn.id = "rhTestSecondCaptainSearch";
     btn.type = "button";
     btn.className = "btn";
-    btn.textContent = "ΑΝΑΖΗΤΗΣΗ 2ου ΚΥΒΕΡΝΗΤΗ ΣΤΗΝ ΕΙΟ";
+    btn.textContent = "ΕΛΕΓΧΟΣ ΔΕΛΤΙΟΥ 2ου ΚΥΒΕΡΝΗΤΗ";
     btn.addEventListener("click", () => openEioAthleteRegistry("secondCaptain"));
     section.insertBefore(btn, section.querySelector(".personStatus"));
   }
@@ -2663,7 +2663,7 @@ function hideSecondCaptain() {
 
 /* ============================================================
    RegattaHub EIO Helper — TEST local athlete lookup
-   Η αναζήτηση αθλητών ΔΕΝ κάνει κλήση προς την ΕΙΟ.
+   Η αναζήτηση αθλητών δεν κάνει απευθείας κλήση στο μητρώο.
    Τα δεδομένα έρχονται από την browser extension.
    ============================================================ */
 const RH_EIO_HELPER = {
@@ -2813,7 +2813,7 @@ function rhEioImport_(payload) {
   if (RH_UNIFIED.pending) {
     Promise.resolve(rhUnifiedImport_(payload)).catch(error=>{
       console.error("RegattaHub EIO import:",error);
-      rhUnifiedFailure_("Δεν ολοκληρώθηκε η μεταφορά από την ΕΙΟ. Δοκιμάστε ξανά.");
+      rhUnifiedFailure_("Δεν ολοκληρώθηκε η μεταφορά στοιχείων. Δοκιμάστε ξανά.");
     });
     return;
   }
@@ -2836,7 +2836,7 @@ function rhEioImport_(payload) {
   if (!records.length) {
     alert(
       "Ο Helper παρέδωσε δεδομένα, αλλά δεν αναγνωρίστηκε κανένα δελτίο.\n\n" +
-      "Στην ΕΙΟ κάντε πρώτα την αναζήτηση, περιμένετε να εμφανιστεί το αποτέλεσμα " +
+      "Στο μητρώο κάντε πρώτα την αναζήτηση, περιμένετε να εμφανιστεί το αποτέλεσμα " +
       "και μετά πατήστε «RegattaHub · ΜΕΤΑΦΟΡΑ ΣΤΟΝ ΑΓΩΝΑ»."
     );
     return;
@@ -2926,7 +2926,7 @@ function rhEioImport_(payload) {
 
       let message = "✓ Μεταφέρθηκαν " + crewRecords.length +
                     (crewRecords.length === 1 ? " μέλος" : " μέλη") +
-                    " πληρώματος από την ΕΙΟ.";
+                    " πληρώματος από τον έλεγχο.";
 
       if (removedCaptains > 0) {
         message += "\nΟι κυβερνήτες εξαιρέθηκαν αυτόματα από το πλήρωμα.";
@@ -2947,7 +2947,7 @@ function rhEioImport_(payload) {
   // ---------------------------------------------------------------
   if (records.length !== 1) {
     alert(
-      "Για τον κυβερνήτη αναζητήστε στην ΕΙΟ ένα μόνο δελτίο και πατήστε ξανά " +
+      "Για τον κυβερνήτη αναζητήστε ένα μόνο δελτίο και πατήστε ξανά " +
       "«RegattaHub · ΜΕΤΑΦΟΡΑ ΣΤΟΝ ΑΓΩΝΑ»."
     );
     return;
@@ -3031,8 +3031,8 @@ async function lookupPerson(input) {
     }
 
     alert(
-      "Δεν έχουν φορτωθεί ακόμη δεδομένα ΕΙΟ.\n\n" +
-      "1. Ανοίξτε το Μητρώο Αθλητών της ΕΙΟ.\n" +
+      "Δεν έχουν φορτωθεί ακόμη αποτελέσματα ελέγχου δελτίων.\n\n" +
+      "1. Ανοίξτε τη σελίδα ελέγχου αθλητικών δελτίων.\n" +
       "2. Αναζητήστε το δελτίο ή τα δελτία.\n" +
       "3. Πατήστε «RegattaHub · ΜΕΤΑΦΟΡΑ ΣΤΟΝ ΑΓΩΝΑ».\n" +
       "4. Η επιστροφή στο RegattaHub γίνεται αυτόματα."
@@ -3077,14 +3077,14 @@ async function lookupPerson(input) {
   if (statusEl) {
     statusEl.textContent = record.notFound ? "✖ ΔΕΝ ΒΡΕΘΗΚΕ" : (active ? "✓ Active" : "⚠ ΜΗ ΕΝΕΡΓΟ");
     statusEl.style.color = active ? "#17663e" : "#a52331";
-    statusEl.title = "Κατάσταση ΕΙΟ: " + actualStatus;
+    statusEl.title = "Κατάσταση δελτίου: " + actualStatus;
   }
   const statusBadge = row.querySelector(".rhEioStatusBadge");
   if (statusBadge) {
     statusBadge.textContent = (record.notFound ? "✖ " : (active ? "✓ " : "⚠ ")) + actualStatus;
     statusBadge.classList.toggle("rhStatusActive", active);
     statusBadge.classList.toggle("rhStatusInvalid", !active);
-    statusBadge.title = "Κατάσταση όπως εμφανίστηκε στην ΕΙΟ: " + actualStatus;
+    statusBadge.title = "Κατάσταση όπως εμφανίστηκε στο μητρώο: " + actualStatus;
   }
 
   refreshWosrSelectors();
@@ -3161,7 +3161,7 @@ function addCrewMember() {
             <th style="border:1px solid #bfb6aa; padding:6px;">ΔΕΛΤΙΟ</th>
             <th style="border:1px solid #bfb6aa; padding:6px;">ΟΝΟΜΑ</th>
             <th style="border:1px solid #bfb6aa; padding:6px;">ΟΜΙΛΟΣ</th>
-            <th style="border:1px solid #bfb6aa; padding:6px; width:114px;">ΚΑΤΑΣΤΑΣΗ ΕΙΟ</th>
+            <th style="border:1px solid #bfb6aa; padding:6px; width:114px;">ΚΑΤΑΣΤΑΣΗ ΔΕΛΤΙΟΥ</th>
           <th style="border:1px solid #bfb6aa; padding:6px; width:130px;">ΕΝΕΡΓΕΙΑ</th>
           </tr>
         </thead>
@@ -3178,12 +3178,12 @@ function addCrewMember() {
   tr.innerHTML = `
     <td class="rowNo" style="border:1px solid #bfb6aa; padding:6px; text-align:center;"></td>
     <td style="border:1px solid #bfb6aa; padding:6px;">
- <input type="text" placeholder="19012" readonly aria-label="Δελτίο μέλους από ΕΙΟ" style="width:75px; height:36px; font-size:16px; text-align:center; background:#f4f6f7;">
+ <input type="text" placeholder="19012" readonly aria-label="Αριθμός δελτίου μέλους" style="width:75px; height:36px; font-size:16px; text-align:center; background:#f4f6f7;">
       <div class="personStatus" style="font-weight:bold; margin-top:6px; font-size:12px;"></div>
     </td>
     <td style="border:1px solid #bfb6aa; padding:6px;"><span class="name"></span></td>
     <td style="border:1px solid #bfb6aa; padding:6px;"><span class="club"></span></td>
-    <td style="border:1px solid #bfb6aa; padding:6px; text-align:center;vertical-align:middle"><span class="rhEioStatusBadge" aria-label="Κατάσταση δελτίου ΕΙΟ">—</span></td>
+    <td style="border:1px solid #bfb6aa; padding:6px; text-align:center;vertical-align:middle"><span class="rhEioStatusBadge" aria-label="Κατάσταση δελτίου">—</span></td>
    <td style="border:1px solid #bfb6aa; padding:6px; text-align:center;">
 <button type="button"
         onclick="deleteCrewRow(this)"
@@ -3431,24 +3431,47 @@ function rhUnifiedValidate_() {
 // Δεν επηρεάζει τη λογική/ασφάλεια ελέγχου δελτίων.
 function rhUnifiedBusy_(busy, single=false) {
   const box=rhUnifiedGet_("rhEioBusy");
+  const allButton=rhUnifiedGet_("rhAllCheckBtn");
+  const singleButton=rhUnifiedGet_("rhSingleCheckBtn");
   RH_UNIFIED.busySeq=(RH_UNIFIED.busySeq || 0)+1;
+
+  // Αποτρέπουμε διπλό κλικ για όσο περιμένουμε τα αποτελέσματα.
+  if(allButton) {
+    allButton.disabled=!!busy;
+    allButton.textContent=busy&&!single
+      ?"ΓΙΝΕΤΑΙ ΕΛΕΓΧΟΣ…"
+      :"ΕΛΕΓΧΟΣ ΕΓΚΥΡΟΤΗΤΑΣ ΔΕΛΤΙΩΝ";
+  }
+  if(singleButton) {
+    singleButton.disabled=!!busy;
+    singleButton.textContent=busy&&single
+      ?"ΓΙΝΕΤΑΙ ΕΛΕΓΧΟΣ…"
+      :"ΕΛΕΓΧΟΣ ΜΟΝΟ ΝΕΟΥ ΔΕΛΤΙΟΥ";
+  }
   if(!box)return;
+  if(busy) {
+    // Η ένδειξη εμφανίζεται πάνω από το κουμπί που μόλις πατήθηκε.
+    const target=single ? singleButton : allButton;
+    if(target)target.insertAdjacentElement("beforebegin",box);
+  }
   box.style.display=busy?"flex":"none";
   if(!busy)return;
   const text=rhUnifiedGet_("rhEioBusyText");
   if(text)text.textContent=single
-    ?"Ελέγχουμε το νέο δελτίο στην ΕΙΟ…"
-    :"Ελέγχουμε τα δελτία στην ΕΙΟ…";
+    ?"Έλεγχος εγκυρότητας νέου δελτίου σε εξέλιξη…"
+    :"Έλεγχος εγκυρότητας δελτίων σε εξέλιξη…";
   const seq=RH_UNIFIED.busySeq;
   window.setTimeout(()=>{
     if(seq!==RH_UNIFIED.busySeq || !RH_UNIFIED.pending)return;
     const text=rhUnifiedGet_("rhEioBusyText");
-    if(text)text.textContent="Η ΕΙΟ καθυστερεί. Ο έλεγχος συνεχίζεται…";
+    if(text)text.textContent="Ο έλεγχος καθυστερεί. Παρακαλώ περιμένετε…";
   },18000);
 }
 function rhUnifiedFailure_(message) {
+  const single=RH_UNIFIED.pending?.mode==="single";
   rhUnifiedBusy_(false);
-  if(RH_UNIFIED.pending?.mode==="single")rhUnifiedEditMessage_(message,true);
+  RH_UNIFIED.pending=null;
+  if(single)rhUnifiedEditMessage_(message,true);
   else rhUnifiedStatus_(message,true);
 }
 function rhUnifiedShowEdit_(inputId) {
@@ -3530,7 +3553,7 @@ function rhUnifiedCheckSingle_() {
   const editing=RH_UNIFIED.editing;
   if(!editing)return;
   if(RH_UNIFIED.pending) {
-    rhUnifiedEditMessage_("Εκκρεμεί επιστροφή από την ΕΙΟ.",true);return;
+    rhUnifiedEditMessage_("Αναμένεται η ολοκλήρωση του ελέγχου δελτίων.",true);return;
   }
   const card=rhUnifiedGet_("rhSingleCard").value.trim();
   if(!/^\d+$/.test(card)) {rhUnifiedEditMessage_("Πληκτρολογήστε έναν αριθμό δελτίου.",true);return;}
@@ -3662,11 +3685,12 @@ function rhUnifiedReset_() {
   rhUnifiedStatus_("Συμπληρώστε τα δελτία και πατήστε «ΕΛΕΓΧΟΣ ΟΛΩΝ ΤΩΝ ΔΕΛΤΙΩΝ».");
 }
 function rhUnifiedCheck_() {
+  if(RH_UNIFIED.pending) return;
   let assignment;
   try {assignment=rhUnifiedValidate_();}
   catch(err) {rhUnifiedStatus_(err.message,true);alert(err.message);return;}
   if (document.documentElement.dataset.rhEioHelperReady!=="1") {
-    alert("Απαιτείται ενεργή η επέκταση RegattaHub για τον έλεγχο στην ΕΙΟ.");
+    alert("Η επέκταση RegattaHub δεν αναγνωρίστηκε. Βεβαιωθείτε ότι είναι ενεργή και ανανεώστε τη σελίδα.");
     return;
   }
   // Δεν αναμειγνύονται δεδομένα παλιάς αναζήτησης με καινούργια.
@@ -3675,7 +3699,7 @@ function rhUnifiedCheck_() {
   RH_UNIFIED.lastCaptureKey="";
   rhUnifiedGet_("continueToJotformBtn").style.display="none";
   rhUnifiedClearCaptainLabels_();
-  rhUnifiedStatus_("Έλεγχος " + assignment.cards.length + " δελτίων σε εξέλιξη στην ΕΙΟ…");
+  rhUnifiedStatus_("Έλεγχος " + assignment.cards.length + " δελτίων σε εξέλιξη…");
   rhUnifiedBusy_(true,false);
   setEioImportTarget_("crew");
   document.dispatchEvent(new CustomEvent("regattahub:open-eio-request", {
@@ -3743,34 +3767,34 @@ async function rhUnifiedImport_(payload) {
     const hash=pageUrl.hash.startsWith("#rh=")?decodeURIComponent(pageUrl.hash.slice(4)):"";
     const fromHash=rhUnifiedTokens_(hash).map(rhUnifiedKey_);
     if(fromHash.length!==pending.keys.length||fromHash.some((v,i)=>v!==pending.keys[i])) throw Error();
-  } catch(_){rhUnifiedFailure_("Δεν επιβεβαιώθηκε η σωστή αναζήτηση στην ΕΙΟ. Κάντε ξανά την αναζήτηση και τη μεταφορά.");return;}
+  } catch(_){rhUnifiedFailure_("Δεν επιβεβαιώθηκε η σωστή αναζήτηση δελτίων. Κάντε ξανά την αναζήτηση και τη μεταφορά.");return;}
   const records=rhEioParse_(payload);
   const found=new Map(records.map(r=>[rhUnifiedKey_(r.card||r.key),r]));
   const missing=pending.keys.filter(k=>!found.has(k));
   const extra=[...found.keys()].filter(k=>!pending.keys.includes(k));
   if(extra.length) {
-    rhUnifiedFailure_("Τα αποτελέσματα της ΕΙΟ περιέχουν άσχετα δελτία: " + extra.join(", ") + ". Δεν μεταφέρθηκαν δεδομένα.");
+    rhUnifiedFailure_("Τα αποτελέσματα του ελέγχου περιέχουν άσχετα δελτία: " + extra.join(", ") + ". Δεν μεταφέρθηκαν δεδομένα.");
     return;
   }
   // A partial/empty result is acceptable ONLY when the extension has
   // explicitly completed the normal EIO search. Never silently declare
   // an athlete missing because the site is slow or the page is stale.
   if(missing.length && payload.searchComplete !== true) {
-    rhUnifiedFailure_("Λείπουν αποτελέσματα για: " + missing.join(", ") + ". Ολοκληρώστε τον έλεγχο στην ΕΙΟ.");
+    rhUnifiedFailure_("Λείπουν αποτελέσματα για: " + missing.join(", ") + ". Ολοκληρώστε τον έλεγχο εγκυρότητας.");
     return;
   }
   if(!records.length && !/Δεν\s+βρέθηκαν\s+αποτελέσματα|Κανένα\s+αποτέλεσμα/i.test(String(payload.text||""))) {
-    rhUnifiedFailure_("Δεν επιβεβαιώθηκε αποτέλεσμα ή ρητό «Δεν βρέθηκε» από την ΕΙΟ.");
+    rhUnifiedFailure_("Δεν επιβεβαιώθηκε αποτέλεσμα ή ρητό «Δεν βρέθηκε» από το μητρώο.");
     return;
   }
   // Display-only placeholders: NOT athlete records and NEVER Active.
   // Permit editing/removing the offending ID without rechecking the others.
   const missingRecord = (card) => ({key:rhUnifiedKey_(card),card:String(card),
-    name:"ΔΕΝ ΒΡΕΘΗΚΕ ΣΤΗΝ ΕΙΟ",club:"",status:"ΔΕΝ ΒΡΕΘΗΚΕ",notFound:true});
+    name:"ΔΕΝ ΒΡΕΘΗΚΕ ΣΤΟ ΜΗΤΡΩΟ",club:"",status:"ΔΕΝ ΒΡΕΘΗΚΕ",notFound:true});
   if(pending.mode==="single") {
     const record=found.get(pending.keys[0]);
     if(!record || !rhUnifiedIsActive_(record.status)) {
-      const why=!record ? "Το δελτίο "+pending.card+" ΔΕΝ ΒΡΕΘΗΚΕ στην ΕΙΟ. Δεν προστέθηκε."
+      const why=!record ? "Το δελτίο "+pending.card+" ΔΕΝ ΒΡΕΘΗΚΕ στο μητρώο. Δεν προστέθηκε."
         : "Το δελτίο "+pending.card+" έχει κατάσταση «"+record.status+"». Δεν προστέθηκε.";
       rhUnifiedEditMessage_(why+" Επιλέξτε άλλο δελτίο.",true);
       RH_UNIFIED.pending=null;rhUnifiedBusy_(false);return;
@@ -3862,14 +3886,14 @@ async function rhUnifiedImport_(payload) {
     // Η προειδοποίηση πρέπει να φαίνεται δίπλα στα επαληθευμένα στοιχεία.
     if(verifiedWarning) {
       const list=notActive.map(r=>(r.card || r.key || "?")+" ("+(r.status || "Άγνωστη κατάσταση")+")");
-      verifiedWarning.textContent=(missing.length ? "✖ ΔΕΝ ΒΡΕΘΗΚΑΝ στην ΕΙΟ: "+missing.join(", ")+". " : "")+
-        (notActive.length>missing.length ? "⚠ Μη ενεργά δελτία ΕΙΟ: "+list.filter(x=>!missing.some(id=>x.startsWith(id+" "))).join(", ")+". " : "")+
+      verifiedWarning.textContent=(missing.length ? "✖ ΔΕΝ ΒΡΕΘΗΚΑΝ στο μητρώο: "+missing.join(", ")+". " : "")+
+        (notActive.length>missing.length ? "⚠ Μη ενεργά δελτία: "+list.filter(x=>!missing.some(id=>x.startsWith(id+" "))).join(", ")+". " : "")+
         "Χρησιμοποιήστε «ΔΙΑΓΡΑΦΗ» για αλλαγή δελτίου. Δεν επιτρέπεται ακόμη συνέχεια στη Jotform.";
       verifiedWarning.style.display="block";
     }
-    rhUnifiedStatus_((missing.length?"Δεν βρέθηκαν στην ΕΙΟ: "+missing.join(", ")+". ":"")+notActive.length+" δελτία απαιτούν διόρθωση ή έλεγχο. Η συνέχεια παραμένει κλειδωμένη.",true);
+    rhUnifiedStatus_((missing.length?"Δεν βρέθηκαν στο μητρώο: "+missing.join(", ")+". ":"")+notActive.length+" δελτία απαιτούν διόρθωση ή έλεγχο. Η συνέχεια παραμένει κλειδωμένη.",true);
   } else {
-    rhUnifiedStatus_("✓ Ελέγχθηκαν επιτυχώς "+pending.cards.length+" δελτία στην ΕΙΟ. Επιλέξτε στη συνέχεια τα απαιτούμενα WS OSR μέλη.");
+    rhUnifiedStatus_("✓ Ελέγχθηκαν επιτυχώς "+pending.cards.length+" δελτία. Επιλέξτε στη συνέχεια τα απαιτούμενα WS OSR μέλη.");
   }
 }
 function rhUnifiedInit_() {
@@ -3897,10 +3921,12 @@ function rhUnifiedInit_() {
     #rhAllPanel button{display:block;width:100%;margin:18px 0 12px;padding:14px 12px;font-size:18px;font-weight:800;background:#31802b;color:white;border:0;border-radius:7px;cursor:pointer}
     #rhAllPanel .rhNote{font-size:13px;color:#566271;text-align:center}
     #rhAllStatus{border:1px solid #b3d6be;border-radius:7px;padding:10px;font-size:14px;margin:10px 0}
-    #rhEioBusy{display:none;position:fixed;top:115px;left:50%;transform:translateX(-50%);z-index:2147483600;max-width:calc(100vw - 32px);width:max-content;box-sizing:border-box;align-items:center;gap:13px;background:#fff;border:1px solid #b5d1df;border-radius:12px;box-shadow:0 8px 24px #12365335;padding:14px 18px;color:#163b5b;font-size:15px;font-family:Arial,sans-serif;pointer-events:none}
-    #rhEioBusy .rhBusySpinner{flex:none;width:24px;height:24px;border:3px solid #d2e8f2;border-top-color:#1878b6;border-radius:50%;animation:rhEioSpin 0.85s linear infinite}
+    /* Η αναμονή βρίσκεται μέσα στη φόρμα, ακριβώς πάνω από το ενεργό κουμπί. */
+    #rhEioBusy{display:none;position:static;transform:none;max-width:100%;width:100%;box-sizing:border-box;align-items:center;justify-content:center;gap:12px;background:#eef5fb;border:1px solid #b5d1df;border-radius:8px;box-shadow:none;padding:12px 14px;margin:14px 0 0;color:#163b5b;font-size:14px;font-family:Arial,sans-serif;text-align:left}
+    #rhEioBusy .rhBusySpinner{flex:none;width:23px;height:23px;border:3px solid #d2e8f2;border-top-color:#1878b6;border-radius:50%;animation:rhEioSpin 0.85s linear infinite}
     #rhEioBusyText{font-weight:700}
     #rhEioBusy .rhBusyDetail{font-size:12px;color:#51667a;margin-top:4px}
+    #rhAllPanel #rhAllCheckBtn:disabled, #rhEditDecision #rhSingleCheckBtn:disabled{opacity:.72;cursor:wait!important;filter:saturate(.75)}
     @keyframes rhEioSpin{to{transform:rotate(360deg)}}
     @media(prefers-reduced-motion:reduce){#rhEioBusy .rhBusySpinner{animation:none;border-top-color:#1878b6}}
     #rhVerifiedCaptains .rhRoleVerified{display:grid;grid-template-columns:92px minmax(0,1fr);gap:5px 8px;align-items:start;margin-top:8px;padding:10px;background:#f2faf4;border:1px solid #b9d5bf;border-radius:7px;font-size:13px;line-height:1.35;color:#234a33;font-weight:400}
@@ -3917,14 +3943,14 @@ function rhUnifiedInit_() {
     @media(max-width:580px){#rhAllPanel .rhInputs,#rhVerifiedCaptains .rhVerifiedGrid{grid-template-columns:1fr}}
   </style>
   <h3>ΣΤΟΙΧΕΙΑ ΚΥΒΕΡΝΗΤΗ & ΠΛΗΡΩΜΑΤΟΣ</h3>
-  <p class="rhIntro">Συμπληρώνετε όλους τους αριθμούς εδώ. <strong>Ένας έλεγχος στην ΕΙΟ για όλους.</strong></p>
+  <p class="rhIntro">Συμπληρώνετε όλους τους αριθμούς εδώ. <strong>Ένας έλεγχος εγκυρότητας για όλους.</strong></p>
   <div class="rhInputs">
     <label>Κυβερνήτης * <input id="rhAllCaptain" type="text" inputmode="numeric" autocomplete="off" placeholder="Αριθμός δελτίου" aria-label="Δελτίο κυβερνήτη"></label>
     <label>2ος κυβερνήτης (προαιρετικά)<input id="rhAllSecond" type="text" inputmode="numeric" autocomplete="off" placeholder="Αριθμός δελτίου" aria-label="Δελτίο δεύτερου κυβερνήτη"></label>
     <label class="rhWide">Πλήρωμα * <textarea id="rhAllCrew" placeholder="Ένα δελτίο ανά γραμμή ή με κόμματα" aria-label="Δελτία πληρώματος"></textarea><small>Έως 10 μέλη. Μην επαναλάβετε τους κυβερνήτες.</small></label>
   </div>
-  <button type="button" id="rhAllCheckBtn">ΕΛΕΓΧΟΣ ΟΛΩΝ ΤΩΝ ΔΕΛΤΙΩΝ ΣΤΗΝ ΕΙΟ</button>
-  <div class="rhNote">Η επέκταση αναζητά αυτόματα στην ΕΙΟ και εμφανίζει ποια δελτία βρέθηκαν και ποια όχι.</div>
+  <button type="button" id="rhAllCheckBtn">ΕΛΕΓΧΟΣ ΕΓΚΥΡΟΤΗΤΑΣ ΔΕΛΤΙΩΝ</button>
+  <div class="rhNote">Η επέκταση ελέγχει την εγκυρότητα των δελτίων και εμφανίζει ποια βρέθηκαν και ποια όχι.</div>
   <div id="rhAllStatus" role="status" aria-live="polite"></div>`;
   oldBlock.insertAdjacentElement("afterend",section);
   // Αποτέλεσμα διακριτό από τον πίνακα αρχικών δελτίων, πριν το πλήρωμα.
@@ -3963,18 +3989,18 @@ function rhUnifiedInit_() {
     <div id="rhSingleSearch" style="display:none;margin-top:14px">
       <label style="font-weight:700" for="rhSingleCard">Νέος αριθμός δελτίου</label>
       <input id="rhSingleCard" type="text" inputmode="numeric" autocomplete="off" style="display:block;margin:8px auto;width:220px;max-width:100%;box-sizing:border-box;padding:10px;font-size:18px;border:2px solid #9ab6ca;border-radius:6px">
-      <button type="button" onclick="rhUnifiedCheckSingle_()" style="background:#25762d;color:white;border:0;border-radius:6px;padding:12px 16px;font-weight:800;cursor:pointer">ΕΛΕΓΧΟΣ ΜΟΝΟ ΝΕΟΥ ΔΕΛΤΙΟΥ ΣΤΗΝ ΕΙΟ</button>
+      <button type="button" id="rhSingleCheckBtn" onclick="rhUnifiedCheckSingle_()" style="background:#25762d;color:white;border:0;border-radius:6px;padding:12px 16px;font-weight:800;cursor:pointer">ΕΛΕΓΧΟΣ ΜΟΝΟ ΝΕΟΥ ΔΕΛΤΙΟΥ</button>
       <p style="font-size:13px;color:#526677">Τα υπόλοιπα δελτία παραμένουν ελεγμένα.</p>
     </div>
     <p id="rhEditMessage" role="status" aria-live="polite" style="display:none;margin-top:10px"></p>`;
   results.insertAdjacentElement("afterend",editBox);
-  // Μόνιμη ένδειξη προόδου: μένει ορατή ακόμη και όταν κρύβεται η φόρμα εισαγωγής.
+  // Ενσωματωμένη ένδειξη προόδου: εμφανίζεται ακριβώς πάνω από το κουμπί.
   const busy=document.createElement("div");
   busy.id="rhEioBusy";
   busy.setAttribute("role","status");
   busy.setAttribute("aria-live","polite");
-  busy.innerHTML='<span class="rhBusySpinner" aria-hidden="true"></span><div><div id="rhEioBusyText">Γίνεται έλεγχος στην ΕΙΟ…</div><div class="rhBusyDetail">Παραμείνετε στο RegattaHub. Τα αποτελέσματα θα εμφανιστούν αυτόματα.</div></div>';
-  document.body.appendChild(busy);
+  busy.innerHTML='<span class="rhBusySpinner" aria-hidden="true"></span><div><div id="rhEioBusyText">Έλεγχος εγκυρότητας δελτίων σε εξέλιξη…</div><div class="rhBusyDetail">Παρακαλώ περιμένετε. Τα αποτελέσματα θα εμφανιστούν αυτόματα.</div></div>';
+  rhUnifiedGet_("rhAllCheckBtn").insertAdjacentElement("beforebegin",busy);
   rhUnifiedGet_("rhAllCaptain").value=rhUnifiedGet_("captainCardInput").value||"";
   rhUnifiedGet_("rhAllSecond").value=rhUnifiedGet_("secondCaptainCardInput").value||"";
   rhUnifiedGet_("rhAllCrew").value=rhUnifiedGet_("bulkCrewCards").value||"";
