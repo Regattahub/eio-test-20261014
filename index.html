@@ -3402,8 +3402,97 @@ const RH_UNIFIED = {
   lastCaptureKey: "",
   verified: false,
   editing: null,
-  busySeq: 0
+  busySeq: 0,
+  installPending: false
 };
+
+const RH_EXTENSION_RESUME_KEY = "rhExtensionResumeUnifiedCheck";
+
+function rhExtensionIsReady_() {
+  return document.documentElement.dataset.rhEioHelperReady === "1";
+}
+
+function rhExtensionGateShow_(message) {
+  const gate = rhUnifiedGet_("rhExtensionInstallGate");
+  const status = rhUnifiedGet_("rhExtensionInstallStatus");
+  if (!gate) return;
+  gate.style.display = "block";
+  if (status) {
+    status.textContent = message || "";
+    status.style.display = message ? "block" : "none";
+  }
+  gate.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function rhExtensionGateHide_() {
+  const gate = rhUnifiedGet_("rhExtensionInstallGate");
+  if (gate) gate.style.display = "none";
+}
+
+function rhExtensionSaveResume_() {
+  const state = {
+    boat: lastFoundData || null,
+    captain: String(rhUnifiedGet_("rhAllCaptain")?.value || ""),
+    second: String(rhUnifiedGet_("rhAllSecond")?.value || ""),
+    crew: String(rhUnifiedGet_("rhAllCrew")?.value || ""),
+    accepted: !!document.getElementById("acceptTermsCheck")?.checked
+  };
+  try {
+    sessionStorage.setItem(RH_EXTENSION_RESUME_KEY, JSON.stringify(state));
+  } catch (_) {}
+}
+
+function rhExtensionRecheck_() {
+  if (rhExtensionIsReady_()) {
+    RH_UNIFIED.installPending = false;
+    rhExtensionGateHide_();
+    rhUnifiedCheck_();
+    return;
+  }
+  rhExtensionSaveResume_();
+  window.location.reload();
+}
+
+function rhExtensionRestoreResume_() {
+  let raw = "";
+  try { raw = sessionStorage.getItem(RH_EXTENSION_RESUME_KEY) || ""; }
+  catch (_) {}
+  if (!raw) return;
+
+  let state = null;
+  try { state = JSON.parse(raw); }
+  catch (_) {}
+  try { sessionStorage.removeItem(RH_EXTENSION_RESUME_KEY); }
+  catch (_) {}
+  if (!state) return;
+
+  const acceptTerms = document.getElementById("acceptTermsCheck");
+  if (acceptTerms) acceptTerms.checked = !!state.accepted;
+  lastFoundData = state.boat || null;
+  if (lastFoundData) showResult(lastFoundData);
+  showCrewScreen();
+
+  rhUnifiedGet_("rhAllCaptain").value = state.captain || "";
+  rhUnifiedGet_("rhAllSecond").value = state.second || "";
+  rhUnifiedGet_("rhAllCrew").value = state.crew || "";
+  RH_UNIFIED.installPending = true;
+
+  const finish = function () {
+    if (rhExtensionIsReady_()) {
+      RH_UNIFIED.installPending = false;
+      rhExtensionGateHide_();
+      rhUnifiedCheck_();
+    } else {
+      rhExtensionGateShow_("Η επέκταση δεν εντοπίστηκε ακόμη. Ολοκληρώστε την εγκατάσταση και πατήστε ξανά «ΕΓΚΑΤΑΣΤΑΘΗΚΕ — ΕΛΕΓΧΟΣ ΞΑΝΑ».");
+    }
+  };
+
+  if (rhExtensionIsReady_()) {
+    window.setTimeout(finish, 250);
+  } else {
+    window.setTimeout(finish, 1400);
+  }
+}
 
 function rhUnifiedGet_(id) { return document.getElementById(id); }
 function rhUnifiedKey_(x) { return rhEioCardKey_(x); }
@@ -3689,10 +3778,13 @@ function rhUnifiedCheck_() {
   let assignment;
   try {assignment=rhUnifiedValidate_();}
   catch(err) {rhUnifiedStatus_(err.message,true);alert(err.message);return;}
-  if (document.documentElement.dataset.rhEioHelperReady!=="1") {
-    alert("Η επέκταση RegattaHub δεν αναγνωρίστηκε. Βεβαιωθείτε ότι είναι ενεργή και ανανεώστε τη σελίδα.");
+  if (!rhExtensionIsReady_()) {
+    RH_UNIFIED.installPending = true;
+    rhExtensionGateShow_("");
     return;
   }
+  RH_UNIFIED.installPending = false;
+  rhExtensionGateHide_();
   // Δεν αναμειγνύονται δεδομένα παλιάς αναζήτησης με καινούργια.
   RH_UNIFIED.verified=false;
   RH_UNIFIED.pending={...assignment,requestedAt:Date.now()};
@@ -3920,6 +4012,15 @@ function rhUnifiedInit_() {
     #rhAllPanel small{font-weight:400;color:#58606a}
     #rhAllPanel button{display:block;width:100%;margin:18px 0 12px;padding:14px 12px;font-size:18px;font-weight:800;background:#31802b;color:white;border:0;border-radius:7px;cursor:pointer}
     #rhAllPanel .rhNote{font-size:13px;color:#566271;text-align:center}
+    #rhAllPanel .rhExtensionIntro{margin:14px 0 8px;padding:11px 13px;border:1px solid #8bb6d1;border-radius:7px;background:#eef7fc;color:#143a63;font-size:13px;line-height:1.5;text-align:left}
+    #rhExtensionInstallGate{display:none;margin:14px 0;padding:16px;border:2px solid #d39b00;border-radius:9px;background:#fff8d8;color:#2f241d;text-align:center}
+    #rhExtensionInstallGate h4{margin:0 0 9px;color:#143a63;font-size:20px}
+    #rhExtensionInstallGate p{margin:8px auto;max-width:640px;font-size:14px;line-height:1.5}
+    #rhExtensionInstallGate .rhExtensionWarning{padding:11px 12px;border:1px solid #d39b00;border-radius:7px;background:#fffdf2;text-align:left}
+    #rhExtensionInstallGate .rhExtensionActions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:14px}
+    #rhExtensionInstallGate .rhExtensionAction{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:45px;margin:0;padding:10px 15px;border:0;border-radius:7px;background:#0d5e92;color:#fff;font-size:14px;font-weight:800;line-height:1.3;text-decoration:none;cursor:pointer}
+    #rhExtensionInstallGate button.rhExtensionAction{width:auto;background:#5f5147}
+    #rhExtensionInstallStatus{display:none;margin-top:12px!important;padding:9px 11px;border-radius:6px;background:#fff0f1;color:#9b1829;font-weight:700}
     #rhAllStatus{border:1px solid #b3d6be;border-radius:7px;padding:10px;font-size:14px;margin:10px 0}
     /* Η αναμονή βρίσκεται μέσα στη φόρμα, ακριβώς πάνω από το ενεργό κουμπί. */
     #rhEioBusy{display:none;position:static;transform:none;max-width:100%;width:100%;box-sizing:border-box;align-items:center;justify-content:center;gap:12px;background:#eef5fb;border:1px solid #b5d1df;border-radius:8px;box-shadow:none;padding:12px 14px;margin:14px 0 0;color:#163b5b;font-size:14px;font-family:Arial,sans-serif;text-align:left}
@@ -3949,6 +4050,19 @@ function rhUnifiedInit_() {
     <label>2ος κυβερνήτης (προαιρετικά)<input id="rhAllSecond" type="text" inputmode="numeric" autocomplete="off" placeholder="Αριθμός δελτίου" aria-label="Δελτίο δεύτερου κυβερνήτη"></label>
     <label class="rhWide">Πλήρωμα * <textarea id="rhAllCrew" placeholder="Ένα δελτίο ανά γραμμή ή με κόμματα" aria-label="Δελτία πληρώματος"></textarea><small>Έως 10 μέλη. Μην επαναλάβετε τους κυβερνήτες.</small></label>
   </div>
+  <div class="rhExtensionIntro">Ο έλεγχος των αθλητικών δελτίων πραγματοποιείται μέσω της επίσημης επέκτασης RegattaHub. Αν δεν είναι ήδη εγκατεστημένη, θα σας δοθούν οδηγίες εγκατάστασης.</div>
+  <section id="rhExtensionInstallGate" aria-live="polite">
+    <h4>Απαιτείται η επέκταση RegattaHub</h4>
+    <p><strong>Για να ελεγχθεί εάν τα μέλη του πληρώματός σας διαθέτουν ενεργό αθλητικό δελτίο, απαιτείται η επίσημη επέκταση RegattaHub.</strong></p>
+    <p>Η εγκατάσταση γίνεται μόνο μία φορά μέσω του Chrome Web Store.</p>
+    <p class="rhExtensionWarning"><strong>Σημαντική ενημέρωση:</strong> Επειδή η επέκταση δημοσιεύθηκε πρόσφατα, ο Chrome ενδέχεται να εμφανίσει το μήνυμα «Συνεχίστε με προσοχή». Πρόκειται για αυτόματη προειδοποίηση του Chrome προς νέες επεκτάσεις και δεν σημαίνει ότι εντοπίστηκε πρόβλημα.<br><br>Πατήστε «Συνέχεια για εγκατάσταση» και στη συνέχεια «Προσθήκη επέκτασης».</p>
+    <div class="rhExtensionActions">
+      <a class="rhExtensionAction" href="https://chromewebstore.google.com/detail/kldakciecedlfhddibdnoebklnfblpag" target="_blank" rel="noopener noreferrer">ΕΓΚΑΤΑΣΤΑΣΗ ΕΠΕΚΤΑΣΗΣ REGATTAHUB</a>
+      <button class="rhExtensionAction" type="button" onclick="rhExtensionRecheck_()">ΕΓΚΑΤΑΣΤΑΘΗΚΕ — ΕΛΕΓΧΟΣ ΞΑΝΑ</button>
+    </div>
+    <p>Μετά την εγκατάσταση, επιστρέψτε σε αυτή τη σελίδα και πατήστε «ΕΛΕΓΧΟΣ ΞΑΝΑ». Τα στοιχεία που έχετε ήδη συμπληρώσει θα διατηρηθούν.</p>
+    <p id="rhExtensionInstallStatus"></p>
+  </section>
   <button type="button" id="rhAllCheckBtn">ΕΛΕΓΧΟΣ ΕΓΚΥΡΟΤΗΤΑΣ ΔΕΛΤΙΩΝ</button>
   <div class="rhNote">Η επέκταση ελέγχει την εγκυρότητα των δελτίων και εμφανίζει ποια βρέθηκαν και ποια όχι.</div>
   <div id="rhAllStatus" role="status" aria-live="polite"></div>`;
@@ -4011,6 +4125,7 @@ function rhUnifiedInit_() {
   const oldCrewTextarea=rhUnifiedGet_("bulkCrewCards");
   oldCrewTextarea.style.display="none";
   rhUnifiedStatus_("Συμπληρώστε πρώτα όλους τους αριθμούς δελτίων.");
+  rhExtensionRestoreResume_();
 }
 rhUnifiedInit_();
 
